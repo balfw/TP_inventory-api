@@ -17,4 +17,8 @@ foreach (['framework/cache/data', 'framework/sessions', 'framework/views'] as $d
 } 
  
 $app->useStoragePath($storage); 
+file_put_contents(
+    'php://stderr',
+    'VIEW BOUND: '.($app->bound('view') ? 'YES' : 'NO').PHP_EOL
+);
 $app->handleRequest(Request::capture()); 
